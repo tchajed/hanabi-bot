@@ -1,5 +1,8 @@
+from __future__ import print_function
+
 # A card is "3B", where the first char is 1-5 and the second char is the color
 # (RGBYW)
+
 
 import random
 random.seed(0)
@@ -86,20 +89,20 @@ class GameState:
     for other_player in range(self.num_players):
       hand = self.hands[other_player]
       if other_player == player_index:
-        print "{} (your) hand".format(other_player)
+        print("{} (your) hand".format(other_player))
         for _, hints in hand:
-          print hints
+          print(hints)
       else:
-        print "{} hand".format(other_player)
+        print("{} hand".format(other_player))
         for card, hint in hand:
-          print "{} [{}]".format(card, hint)
-    print "discarded {}".format(" ".join(self.discarded))
+          print("{} [{}]".format(card, hint))
+    print("discarded {}".format(" ".join(self.discarded)))
     played = []
     for color in COLOR_LETTERS:
       played.append("{}{}".format(self.played[color], color))
-    print "played {}".format(" ".join(played))
-    print "{} hints left".format(self.num_tokens)
-    print "{} mistakes made".format(self.num_mistakes)
+    print("played {}".format(" ".join(played)))
+    print("{} hints left".format(self.num_tokens))
+    print("{} mistakes made".format(self.num_mistakes))
 
   @property
   def current_hand(self):
