@@ -3,7 +3,6 @@ from __future__ import print_function
 # A card is "3B", where the first char is 1-5 and the second char is the color
 # (RGBYW)
 
-
 import random
 random.seed(0)
 
@@ -96,10 +95,12 @@ class GameState:
         print("{} hand".format(other_player))
         for card, hint in hand:
           print("{} [{}]".format(card, hint))
+
     print("discarded {}".format(" ".join(self.discarded)))
     played = []
     for color in COLOR_LETTERS:
       played.append("{}{}".format(self.played[color], color))
+
     print("played {}".format(" ".join(played)))
     print("{} hints left".format(self.num_tokens))
     print("{} mistakes made".format(self.num_mistakes))
@@ -121,9 +122,9 @@ class GameState:
 
   def is_complete(self):
     return (all([v == 5 for v in self.played.values()]) or
-        self.num_mistakes >= 3 or
-        (len(self.deck) == 0 and
-          all([len(h) < self.hand_size for h in self.hands])))
+            self.num_mistakes >= 3 or
+            (len(self.deck) == 0 and
+             all([len(h) < self.hand_size for h in self.hands])))
 
 
   # game actions
